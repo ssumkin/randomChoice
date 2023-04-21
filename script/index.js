@@ -19,6 +19,7 @@ let n=0, m=0;
 
 let groupArr;
 let groupPer;
+let excludedNumbers
 
 groupSet.addEventListener("click", function(){
     n = personnel.value*1;
@@ -32,22 +33,33 @@ groupSet.addEventListener("click", function(){
     groupArr = new Array(m);
     groupArr.fill(0);
     groupPer = Math.round(n / m); 
+    excludedNumbers = new Array(m);
 });
 
-function randomGroup(max, min) {
-    let random = Math.floor((Math.random() * max) + min);
+
+ 
+
+
+
+function randomGroup() { 
+    
+    let random;
+    do {
+    random = Math.floor((Math.random() * m) + 1);
+    } while (excludedNumbers.includes(random));
 
     for(let i = 0; i < groupArr.length; i++) {
         if(groupArr[i] < groupPer) {
             if(i+1 == random) { 
-                groupArr[i]++;
+                groupArr[i]++; 
+                if(groupArr[i] == groupPer) {
+                    excludedNumbers.push(i+1)
+                }
                 result.innerHTML = random+"조"; 
                 console.log(groupArr); 
             } 
-        } else {
-            drawing.click(); 
-        } 
-    } 
+        }  
+    }  
 }
 
 drawing.addEventListener("click", function(){   
@@ -66,10 +78,12 @@ drawing.addEventListener("click", function(){
     for(let i = 0; i < groupArr.length; i++) {
         click += groupArr[i];
     }
-    if(n >= click) {
-        randomGroup(m, 1); 
+    if(n > click) {
+         
+        randomGroup(); 
     } else {
-        result.innerHTML = "제비 뽑기 끝!";    
+        result.innerHTML = "제비 뽑기 끝!";  
+        result.style.fontSize = 40+"px"; 
     }
 });
 

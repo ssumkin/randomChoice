@@ -98,6 +98,12 @@ div#wrap {
 }
 
 #group-drawing > h1 {
-    font-size: 40px;
-    text-align: center;
+    font-size: 60px;
+    text-align: center; 
 }
+
+/* @media (max-width: 730px) {
+    #group-drawing > h1 {
+        font-size: 40px; 
+    }
+} */
