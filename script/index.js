@@ -32,31 +32,52 @@ groupSet.addEventListener("click", function(){
 
     groupArr = new Array(m);
     groupArr.fill(0);
-    groupPer = Math.round(n / m); 
+    groupPer = Math.ceil(n / m); 
     excludedNumbers = new Array(m);
+    result.innerHTML = "";
+    for(let i = 1; i <= m; i++) {
+        result.innerHTML += `<span id="span${i}" class="hidden-span">${i}조</span>`
+    }
+ 
 });
 
 
- 
-
-
+let randomCheck = 0;
+let randomCount = 0;
+let color = ['black', 'red', 'orange', 'yello', 'green', 'blue'];
 
 function randomGroup() { 
     
     let random;
     do {
-    random = Math.floor((Math.random() * m) + 1);
+        random = Math.floor((Math.random() * m) + 1);
     } while (excludedNumbers.includes(random));
+ 
+    if(random == randomCheck) {
+        randomCount++;
+    } else {
+        randomCount = 0;
+    }
+
+    for(let i = 1; i <= m; i++) {
+        let span = document.getElementById(`span${i}`);
+        console.log(span.classList);
+        span.classList.replace("show-span", "hidden-span");  
+    }
+
+    randomCheck = random;
 
     for(let i = 0; i < groupArr.length; i++) {
         if(groupArr[i] < groupPer) {
             if(i+1 == random) { 
                 groupArr[i]++; 
                 if(groupArr[i] == groupPer) {
-                    excludedNumbers.push(i+1)
+                    excludedNumbers.push(i+1);
                 }
-                result.innerHTML = random+"조"; 
-                console.log(groupArr); 
+                console.log(groupArr);
+                document.getElementById(`span${i+1}`).style.color = color[randomCount];
+                document.getElementById(`span${i+1}`).classList.replace("hidden-span", "show-span");
+   
             } 
         }  
     }  
@@ -79,19 +100,11 @@ drawing.addEventListener("click", function(){
         click += groupArr[i];
     }
     if(n > click) {
-         
+
         randomGroup(); 
     } else {
         result.innerHTML = "제비 뽑기 끝!";  
         result.style.fontSize = 40+"px"; 
     }
 });
-
-
-
-
-
-
-
-
-
+ 

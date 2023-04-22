@@ -98,12 +98,29 @@ div#wrap {
 }
 
 #group-drawing > h1 {
-    font-size: 60px;
+    font-size: 80px;
     text-align: center; 
 }
 
-/* @media (max-width: 730px) {
-    #group-drawing > h1 {
-        font-size: 40px; 
+
+
+.hidden-span {
+    display: none; 
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
     }
-} */
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+.show-span {
+    display: inline;
+    animation: fadeInUp 1s;
+}
+
