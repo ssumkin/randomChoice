@@ -19,12 +19,17 @@ let n=0, m=0;
 
 let groupArr;
 let groupPer;
-let excludedNumbers
+let excludedNumbers;
+
+let randomCheck = 0;
+let randomCount = 0;
+let color = ['black', 'red', 'orange', 'yello', 'green', 'blue'];
 
 groupSet.addEventListener("click", function(){
     n = personnel.value*1;
     m = group.value*1; 
-
+    randomCheck = 0;
+    randomCount = 0;
     if(n < m) {
         alert("조 개수가 인원 보다 많습니다.\n재설정 해주세요.");
         return false;
@@ -41,11 +46,7 @@ groupSet.addEventListener("click", function(){
  
 });
 
-
-let randomCheck = 0;
-let randomCount = 0;
-let color = ['black', 'red', 'orange', 'yello', 'green', 'blue'];
-
+ 
 function randomGroup() { 
     
     let random;
@@ -104,7 +105,7 @@ drawing.addEventListener("click", function(){
         randomGroup(); 
     } else {
         result.innerHTML = "제비 뽑기 끝!";  
-        result.style.fontSize = 40+"px"; 
+        result.style.fontSize = 60+"px"; 
     }
 });
  
