@@ -23,7 +23,7 @@ let excludedNumbers;
 
 let randomCheck = 0;
 let randomCount = 0;
-let color = ['black', 'red', 'orange', 'yello', 'green', 'blue'];
+let color = ['black', 'red', 'orange', 'yellow', 'green', 'blue'];
 
 groupSet.addEventListener("click", function(){
     n = personnel.value*1;
@@ -61,8 +61,7 @@ function randomGroup() {
     }
 
     for(let i = 1; i <= m; i++) {
-        let span = document.getElementById(`span${i}`);
-        console.log(span.classList);
+        let span = document.getElementById(`span${i}`); 
         span.classList.replace("show-span", "hidden-span");  
     }
 
@@ -74,8 +73,7 @@ function randomGroup() {
                 groupArr[i]++; 
                 if(groupArr[i] == groupPer) {
                     excludedNumbers.push(i+1);
-                }
-                console.log(groupArr);
+                } 
                 document.getElementById(`span${i+1}`).style.color = color[randomCount];
                 document.getElementById(`span${i+1}`).classList.replace("hidden-span", "show-span");
    
